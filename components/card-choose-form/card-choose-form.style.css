@@ -1,0 +1,71 @@
+#card-choose-form-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 370px;
+    padding: 40px;
+    background-color: white;
+    border-radius: 14px;
+}
+
+.card-choose-form-card-container {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 16px;
+    padding: 30px 20px;
+    border-radius: 14px;
+    background-color: rgb(168, 168, 168);
+    z-index: 0;
+}
+
+.card-choose-form-card-container::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    border: 8px transparent;
+    border-radius: 14px;
+    background-image: linear-gradient(
+        to right,
+        #1f144a 0%,
+        #7537c6 50%,
+        #eb0373 100%
+    );
+    z-index: -1;
+}
+
+.card-choose-form-card-data {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+}
+
+.card-choose-form-card-other-data {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.card-choose-form-select-circle {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    background-image: linear-gradient(
+        to bottom,
+        #0e0921 0%,
+        #7537c6 50%,
+        #eb0373 100%
+    );
+    border-radius: 50%;
+}
+
+#card-choose-form-select-icon {
+    position: absolute;
+    top: 6.5px;
+    left: 4.5px;
+}
