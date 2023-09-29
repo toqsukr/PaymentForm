@@ -19,4 +19,6 @@
 ## Технологии
 
 Проект написан на чистом JavaScript, CSS и HTML. Для сборки проекта использовался инструмент Vite.
+
+## Дизайн проекта
 ![image](https://github.com/toqsukr/PaymentForm/assets/72607622/515f8af0-35b4-456e-a4aa-767eb9c55085)
