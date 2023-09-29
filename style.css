@@ -4,9 +4,8 @@ body {
 }
 
 #app {
-    font-family: 'Roboto Condensed';
+    font-family: 'Inter';
     display: flex;
-    flex-direction: row;
     justify-content: space-around;
     align-items: center;
     height: 100%;
@@ -16,4 +15,10 @@ body {
         #fe8b90 50%,
         rgb(255, 255, 255) 100%
     );
+}
+
+#app-inner-container {
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
 }
