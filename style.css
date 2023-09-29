@@ -5,6 +5,10 @@ body {
 
 #app {
     font-family: 'Roboto Condensed';
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
     height: 100%;
     background-image: linear-gradient(
         to bottom,
