@@ -4,7 +4,8 @@
     max-width: 370px;
     padding: 40px;
     background-color: white;
-    border-radius: 14px;
+    border-radius: 10px;
+    box-shadow: -3px 10px 10px 10px rgba(0, 0, 0, 0.3);
 }
 
 .card-choose-form-card-container {
@@ -14,21 +15,18 @@
     justify-content: space-between;
     align-items: center;
     margin: 16px;
-    padding: 30px 20px;
-    border-radius: 14px;
-    background-color: rgb(168, 168, 168);
+    padding: 20px;
+    border-radius: 6px;
+    background-color: rgb(255, 255, 255);
     z-index: 0;
 }
 
 .card-choose-form-card-container::before {
     content: '';
     position: absolute;
-    top: -8px;
-    left: -8px;
-    right: -8px;
-    bottom: -8px;
-    border: 8px transparent;
-    border-radius: 14px;
+    inset: -5px;
+    opacity: 0.1;
+    border-radius: 10px;
     background-image: linear-gradient(
         to right,
         #1f144a 0%,
@@ -43,18 +41,21 @@
     grid-template-columns: 1fr 3fr;
     grid-template-rows: 1fr 1fr;
     gap: 10px;
+    font-size: 13px;
 }
 
 .card-choose-form-card-other-data {
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
+    font-size: 11px;
 }
 
 .card-choose-form-select-circle {
     position: relative;
-    width: 20px;
-    height: 20px;
+    width: 17px;
+    height: 17px;
     background-image: linear-gradient(
         to bottom,
         #0e0921 0%,
@@ -66,6 +67,29 @@
 
 #card-choose-form-select-icon {
     position: absolute;
-    top: 6.5px;
-    left: 4.5px;
+    top: 5px;
+    left: 3px;
+}
+
+#card-choose-form-visa-icon {
+    width: 35px;
+    height: 11px;
+    align-self: center;
+}
+button {
+    font-family: 'Roboto Condensed';
+    font-size: 22px;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    background: linear-gradient(
+        to right,
+        #613bee 0%,
+        #7f18ff 50%,
+        #613bee 100%
+    );
+    border: 0;
+    border-radius: 11px;
+    padding: 14px 30px;
+    color: white;
+    box-shadow: 0px 4px 2px 0px rgba(0, 0, 0, 0.3);
 }
