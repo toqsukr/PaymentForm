@@ -6,6 +6,7 @@
     background-color: white;
     border-radius: 10px;
     box-shadow: -3px 10px 10px 10px rgba(0, 0, 0, 0.3);
+    z-index: 0;
 }
 
 #card-choose-form-cards-section {
@@ -17,35 +18,36 @@
 
 .card-choose-form-card-container {
     display: flex;
-    position: relative;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin: 5px;
+    margin: 4px;
     padding: 20px 30px;
-    border-radius: 6px;
-    background-color: rgb(255, 255, 255);
-    z-index: 0;
+    background: white;
     border: 2px solid #bcbcbc;
+    border-radius: 8px;
 }
 
 .card-selected {
-    border: 4px solid transparent;
+    border: 0;
+    position: relative;
+    background: white;
 }
 
-.card-selected::before {
+.card-selected::after {
     content: '';
     position: absolute;
-    opacity: 0.2;
-    inset: -5px;
     border-radius: 10px;
+    display: block;
+    inset: -4px;
+    z-index: -1;
+
     background: linear-gradient(
         to bottom right,
         #1f144a 0%,
         #7537c6 50%,
         #eb0373 100%
     );
-    z-index: -1;
 }
 
 .card-choose-form-card-data {
