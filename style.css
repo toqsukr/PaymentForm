@@ -12,7 +12,8 @@ body {
     height: 100%;
     background-image: linear-gradient(
         to bottom,
-        #fd6770 0%,
+        #fb5b66 0%,
+        #fe8b90 50%,
         rgb(255, 255, 255) 100%
     );
 }
