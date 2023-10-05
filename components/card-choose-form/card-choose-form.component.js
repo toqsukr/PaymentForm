@@ -16,8 +16,17 @@ export const handleCardContainerClick = () => {
     items.forEach(item => {
         item.addEventListener('click', () => {
             if (!item.classList.contains('.card-selected')) {
-                if (lastElement) lastElement.classList.remove('card-selected')
+                if (lastElement) {
+                    lastElement
+                        .querySelector('.card-choose-form-select-circle')
+                        .classList.remove('circle-selected')
+                    lastElement.classList.remove('card-selected')
+                }
                 item.classList.add('card-selected')
+                console.log(item)
+                item.querySelector(
+                    '.card-choose-form-select-circle'
+                ).classList.add('circle-selected')
                 lastElement = item
             }
         })
