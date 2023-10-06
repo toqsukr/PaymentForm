@@ -1,8 +1,8 @@
 import css from './card.module.css'
 
 export const cardComponent = ({
+    paymentSystem,
     imageURL,
-    imageAlt = '',
     cardNumber,
     cardExpires,
 }) => {
@@ -10,9 +10,15 @@ export const cardComponent = ({
         <div class=${css.cardDataContainer}>
             <div class=${css.cardData}>
                 <img
-                    id=${css.visaIcon}
+                    id=${
+                        paymentSystem === PaymentSystem.VISA
+                            ? css.visaIcon
+                            : paymentSystem === PaymentSystem.MASTERCARD
+                            ? css.mastercardIcon
+                            : css.paypalIcon
+                    }
                     src=${imageURL}
-                    alt=${imageAlt} />
+                    alt='' />
                 <span id=${css.cardNumber}>${cardNumber}</span>
                 <span style="font-size: 14px; align-self: center">Expires</span>
                 <div class=${css.cardOtherData}>
@@ -63,4 +69,10 @@ export const handleCardContainerClick = () => {
             }
         })
     })
+}
+
+export const PaymentSystem = {
+    VISA: 'VISA',
+    MASTERCARD: 'MASTERCARD',
+    PAYPAL: 'PAYPAL',
 }
