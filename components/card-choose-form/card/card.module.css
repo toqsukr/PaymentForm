@@ -24,13 +24,13 @@
     display: block;
     inset: -4px;
     z-index: -1;
-
     background: linear-gradient(
         to bottom right,
         #1f144a 0%,
         #7537c6 50%,
         #eb0373 100%
     );
+    transition: all 1s;
 }
 
 .cardData {
@@ -64,6 +64,7 @@
         #7537c6 50%,
         #eb0373 100%
     );
+    transition: all 1s;
 }
 
 #selectIcon {

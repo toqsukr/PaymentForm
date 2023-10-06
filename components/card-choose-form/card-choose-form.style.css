@@ -1,3 +1,16 @@
+.card-choose-form-card-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 4px;
+    padding: 20px 30px;
+    background: white;
+    border: 2px solid #bcbcbc;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
 #card-choose-form-container {
     display: flex;
     flex-direction: column;

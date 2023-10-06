@@ -1,6 +1,10 @@
 import { cards } from './card-choose-form.data'
 import './card-choose-form.style.css'
-import { cardComponent, handleCardContainerClick } from './card/card.component'
+import {
+    addCardComponent,
+    cardComponent,
+    handleCardContainerClick,
+} from './card/card.component'
 
 export const cardChooseForm = async () => {
     const moduleUrl = new URL(
@@ -16,5 +20,7 @@ export const cardChooseForm = async () => {
         const card = cardComponent(cardData)
         cardSectionElement.appendChild(card)
     })
+    const addCard = addCardComponent()
+    cardSectionElement.appendChild(addCard)
     handleCardContainerClick()
 }
