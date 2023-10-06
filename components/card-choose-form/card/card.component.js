@@ -1,4 +1,4 @@
-import { CardStatus } from '../card-choose-form.data'
+import { CardStatus, PaymentSystem } from '../card-choose-form.data'
 import css from './card.module.css'
 
 export const cardComponent = ({
@@ -102,10 +102,4 @@ export const handleCardContainerClick = () => {
             }
         })
     })
-}
-
-export const PaymentSystem = {
-    VISA: 'VISA',
-    MASTERCARD: 'MASTERCARD',
-    PAYPAL: 'PAYPAL',
 }

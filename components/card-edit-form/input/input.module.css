@@ -1,0 +1,10 @@
+.editorCell {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.editorCell span {
+    font-size: 14px;
+    font-weight: 600;
+}

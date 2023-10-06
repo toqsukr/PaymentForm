@@ -1,3 +1,4 @@
+import { buttonComponent } from '../ui/button/button.component'
 import { cards } from './card-choose-form.data'
 import './card-choose-form.style.css'
 import {
@@ -13,6 +14,13 @@ export const cardChooseForm = async () => {
     )
     const data = await (await fetch(moduleUrl)).text()
     document.querySelector('#card-choose-form-container').innerHTML = data
+
+    appendCards()
+    appendButton()
+    handleCardContainerClick()
+}
+
+const appendCards = () => {
     const cardSectionElement = document.querySelector(
         '#card-choose-form-cards-section'
     )
@@ -22,5 +30,13 @@ export const cardChooseForm = async () => {
     })
     const addCard = addCardComponent()
     cardSectionElement.appendChild(addCard)
-    handleCardContainerClick()
+}
+
+const appendButton = () => {
+    const parentContainer = document.querySelector(
+        '#card-choose-form-container'
+    )
+    const submitButton = buttonComponent({ text: 'Submit' })
+
+    parentContainer.appendChild(submitButton)
 }

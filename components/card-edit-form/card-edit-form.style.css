@@ -100,15 +100,9 @@
     justify-content: space-between;
 }
 
-.card-edit-form-editor-cell {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.card-edit-form-editor-cell span {
-    font-size: 14px;
-    font-weight: 600;
+#card-edit-form-cancel-button {
+    background: white;
+    color: #613bee;
 }
 
 input {

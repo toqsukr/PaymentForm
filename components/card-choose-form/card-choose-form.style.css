@@ -37,21 +37,3 @@
     margin: 0 0 12px 0;
     font-size: 14px;
 }
-
-button {
-    font-family: 'Roboto Condensed';
-    font-size: 22px;
-    font-weight: lighter;
-    letter-spacing: 1px;
-    background: linear-gradient(
-        to right,
-        #613bee 0%,
-        #7f18ff 50%,
-        #613bee 100%
-    );
-    border: 0;
-    border-radius: 11px;
-    padding: 18px 30px;
-    color: white;
-    box-shadow: 0px 4px 2px 0px rgba(0, 0, 0, 0.3);
-}
