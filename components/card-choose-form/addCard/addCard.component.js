@@ -28,13 +28,14 @@ export const addCardComponent = () => {
 
 const applyAddCardContainerClickListener = addCardElement => {
     addCardElement.addEventListener('click', () => {
-        cardEditForm().then(() => {
-            const editCardForm = document.querySelector(
-                '.card-edit-form-container'
-            )
-            setTimeout(() => {
-                editCardForm.classList.add('edit-form-show')
-            }, 200)
-        })
+        if (!document.querySelector('.card-edit-form-container'))
+            cardEditForm().then(() => {
+                const editCardForm = document.querySelector(
+                    '.card-edit-form-container'
+                )
+                setTimeout(() => {
+                    editCardForm.classList.add('edit-form-show')
+                }, 300)
+            })
     })
 }

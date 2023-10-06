@@ -1,6 +1,7 @@
 import { buttonComponent } from '../ui/button/button.component'
 import { inputs } from './card-edit-form.data'
 import './card-edit-form.style.css'
+import { formComponent } from './form/form.component'
 import { inputComponent } from './input/input.component'
 
 export const cardEditForm = async () => {
@@ -12,8 +13,17 @@ export const cardEditForm = async () => {
     document
         .querySelector('#app-inner-container')
         .appendChild(cardEditFormElement)
+    appendForm()
     appendInputs()
     appendButtons()
+}
+
+const appendForm = () => {
+    const cardEditFormCardContainerElement = document.querySelector(
+        '.card-edit-form-container'
+    )
+    const form = formComponent()
+    cardEditFormCardContainerElement.appendChild(form)
 }
 
 const appendInputs = () => {

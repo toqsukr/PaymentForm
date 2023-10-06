@@ -60,7 +60,7 @@ export const applyCardContainerClickListener = () => {
     let lastElement = document.querySelector(`.${css.cardSelected}`)
     items.forEach(item => {
         item.addEventListener('click', () => {
-            deleteCardEditForm()
+            if (item.id != 'add-card-container') deleteCardEditForm()
             if (!item.classList.contains(css.cardSelected)) {
                 if (lastElement) {
                     if (lastElement.querySelector(`.${css.selectCircle}`)) {

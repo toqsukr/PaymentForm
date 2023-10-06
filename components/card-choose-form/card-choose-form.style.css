@@ -1,4 +1,4 @@
-.card-choose-form-card-container-hidden {
+.card-choose-form-card-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -9,14 +9,7 @@
     border: 2px solid #bcbcbc;
     border-radius: 8px;
     cursor: pointer;
-    transition: opacity 0.3s;
 }
-
-.card-choose-form-card-container-shown {
-    opacity: 1;
-    transition: opacity 0.3s;
-}
-
 #card-choose-form-container {
     display: flex;
     flex-direction: column;
