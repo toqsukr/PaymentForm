@@ -1,10 +1,10 @@
 import { buttonComponent } from '../ui/button/button.component'
+import { addCardComponent } from './addCard/addCard.component'
 import { cards } from './card-choose-form.data'
 import './card-choose-form.style.css'
 import {
-    addCardComponent,
+    applyCardContainerClickListener,
     cardComponent,
-    handleCardContainerClick,
 } from './card/card.component'
 
 export const cardChooseForm = async () => {
@@ -17,7 +17,7 @@ export const cardChooseForm = async () => {
 
     appendCards()
     appendButton()
-    handleCardContainerClick()
+    applyCardContainerClickListener()
 }
 
 const appendCards = () => {

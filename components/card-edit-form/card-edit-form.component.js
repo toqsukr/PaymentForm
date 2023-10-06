@@ -4,10 +4,14 @@ import './card-edit-form.style.css'
 import { inputComponent } from './input/input.component'
 
 export const cardEditForm = async () => {
+    const cardEditFormElement = document.createElement('div')
+    cardEditFormElement.className = 'card-edit-form-container'
     const moduleUrl = new URL('./card-edit-form.template.html', import.meta.url)
     const data = await (await fetch(moduleUrl)).text()
-    document.querySelector('#card-edit-form-container').innerHTML = data
-
+    cardEditFormElement.innerHTML = data
+    document
+        .querySelector('#app-inner-container')
+        .appendChild(cardEditFormElement)
     appendInputs()
     appendButtons()
 }
