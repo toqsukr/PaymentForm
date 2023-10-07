@@ -40,7 +40,7 @@ const appendButtons = () => {
     const parentContainer = document.querySelector(
         '#card-edit-form-button-container'
     )
-    const submitButton = buttonComponent({ text: 'Submit' })
+    const submitButton = buttonComponent({ text: 'Submit', type: 'submit' })
 
     const cancelButton = buttonComponent({
         text: 'Cancel',

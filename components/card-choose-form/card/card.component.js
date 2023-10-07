@@ -52,34 +52,33 @@ export const cardComponent = ({
         status === CardStatus.DEFAULT && css.cardSelected
     }`
     cardElement.innerHTML = cardContent
+    setupCardContainerClickListener(cardElement)
     return cardElement
 }
 
-export const applyCardContainerClickListener = () => {
-    const items = document.querySelectorAll(`.${css.cardContainer}`)
-    let lastElement = document.querySelector(`.${css.cardSelected}`)
-    items.forEach(item => {
-        item.addEventListener('click', () => {
-            if (item.id != 'add-card-container') deleteCardEditForm()
-            if (!item.classList.contains(css.cardSelected)) {
-                if (lastElement) {
-                    if (lastElement.querySelector(`.${css.selectCircle}`)) {
-                        lastElement
-                            .querySelector(`.${css.selectCircle}`)
-                            .classList.remove(css.circleSelected)
-                    }
-                    lastElement.classList.remove(css.cardSelected)
+export const setupCardContainerClickListener = cardElement => {
+    const handleClick = () => {
+        const lastElement = document.querySelector(`.${css.cardSelected}`)
+        if (cardElement.id != 'add-card-container') deleteCardEditForm()
+        if (!cardElement.classList.contains(css.cardSelected)) {
+            if (lastElement) {
+                if (lastElement.querySelector(`.${css.selectCircle}`)) {
+                    lastElement
+                        .querySelector(`.${css.selectCircle}`)
+                        .classList.remove(css.circleSelected)
                 }
-                item.classList.add(css.cardSelected)
-                if (item.querySelector(`.${css.selectCircle}`)) {
-                    item.querySelector(`.${css.selectCircle}`).classList.add(
-                        css.circleSelected
-                    )
-                }
-                lastElement = item
+                lastElement.classList.remove(css.cardSelected)
             }
-        })
-    })
+            cardElement.classList.add(css.cardSelected)
+            if (cardElement.querySelector(`.${css.selectCircle}`)) {
+                cardElement
+                    .querySelector(`.${css.selectCircle}`)
+                    .classList.add(css.circleSelected)
+            }
+            lastElement = cardElement
+        }
+    }
+    cardElement.addEventListener('click', () => handleClick())
 }
 
 const deleteCardEditForm = () => {

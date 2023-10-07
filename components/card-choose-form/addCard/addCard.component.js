@@ -1,4 +1,5 @@
 import { cardEditForm } from '../../card-edit-form/card-edit-form.component'
+import { setupCardContainerClickListener } from '../card/card.component'
 import css from '../card/card.module.css'
 
 export const addCardComponent = () => {
@@ -22,11 +23,12 @@ export const addCardComponent = () => {
     addCardElement.className = css.cardContainer
     addCardElement.id = 'add-card-container'
     addCardElement.innerHTML = addCardContent
-    applyAddCardContainerClickListener(addCardElement)
+    setupCardContainerClickListener(addCardElement)
+    setupAddCardContainerClickListener(addCardElement)
     return addCardElement
 }
 
-const applyAddCardContainerClickListener = addCardElement => {
+const setupAddCardContainerClickListener = addCardElement => {
     addCardElement.addEventListener('click', () => {
         if (!document.querySelector('.card-edit-form-container'))
             cardEditForm().then(() => {

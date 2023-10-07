@@ -9,12 +9,14 @@
     align-self: flex-end;
     margin: 0 0 70px 0;
     opacity: 0;
-    transition: opacity 0.3s;
+    scale: 0;
+    transition: scale 0.5s, opacity 0.5s;
 }
 
 .edit-form-show {
+    scale: 1;
     opacity: 1;
-    transition: opacity 0.3s;
+    transition: scale 0.5s, opacity 0.5s;
 }
 
 #card-edit-form-card-container {

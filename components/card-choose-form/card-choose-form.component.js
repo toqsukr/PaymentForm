@@ -1,11 +1,8 @@
+import { getFromStorage } from '../../utils/functions'
 import { buttonComponent } from '../ui/button/button.component'
 import { addCardComponent } from './addCard/addCard.component'
-import { cards } from './card-choose-form.data'
 import './card-choose-form.style.css'
-import {
-    applyCardContainerClickListener,
-    cardComponent,
-} from './card/card.component'
+import { cardComponent } from './card/card.component'
 
 export const cardChooseForm = async () => {
     const moduleUrl = new URL(
@@ -17,13 +14,14 @@ export const cardChooseForm = async () => {
 
     appendCards()
     appendButton()
-    applyCardContainerClickListener()
 }
 
-const appendCards = () => {
+export const appendCards = () => {
     const cardSectionElement = document.querySelector(
         '#card-choose-form-cards-section'
     )
+    cardSectionElement.innerHTML = ''
+    const cards = getFromStorage('cards')
     cards.forEach(cardData => {
         const card = cardComponent(cardData)
         cardSectionElement.appendChild(card)
