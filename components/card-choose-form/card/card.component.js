@@ -1,5 +1,8 @@
+import { addCardComponent } from '../addCard/addCard.component'
 import { CardStatus } from '../card-choose-form.data'
 import css from './card.module.css'
+import { checkIconComponent } from './checkIcon/checkIcon.component'
+import { trashIconComponent } from './trashIcon/trashIcon.component'
 
 const cardStyles = {
     visa: css.visaIcon,
@@ -17,45 +20,54 @@ export const cardComponent = ({
     cardExpires,
 }) => {
     const cardContent = `
-        <div class=${css.cardDataContainer}>
-            <div class=${css.cardData}>
-                <img
-                    id=${cardStyles[paymentSystem]}
-                    src=${imageURL}
-                    alt='' />
-                <span id=${css.cardNumber}>${cardNumber}</span>
-                <span style="font-size: 14px; align-self: center">Expires</span>
-                <div class=${css.cardOtherData}>
-                    <span style="font-weight: 600; font-style: italic">${cardExpires}</span>
-                    <span style="font-weight: bold">${status}</span>
-                </div>
+        <div class=${css.cardData}>
+            <img
+                id=${cardStyles[paymentSystem]}
+                src=${imageURL}
+                alt='' />
+            <span id=${css.cardNumber}>${cardNumber}</span>
+            <span style="font-size: 14px; align-self: center">Expires</span>
+            <div class=${css.cardOtherData}>
+                <span style="font-weight: 600; font-style: italic">${cardExpires}</span>
+                <span style="font-weight: bold">${status}</span>
             </div>
         </div>
-        <span class='${css.selectCircle} ${
-        status === CardStatus.DEFAULT && css.circleSelected
-    }'>
-            <svg
-                id=${css.selectIcon}
-                width="10"
-                height="8"
-                viewBox="0 0 10 8"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M1.5 4.5L4 6.5L9 1"
-                    stroke="white"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round" />
-            </svg>
-        </span>`
+        `
     const cardElement = document.createElement('div')
     cardElement.className = `${css.cardContainer} ${
         status === CardStatus.DEFAULT && css.cardSelected
     }`
     cardElement.innerHTML = cardContent
+
+    appendIcons(cardElement, status)
+
     setupCardContainerClickListener(cardElement)
     return cardElement
+}
+
+const appendIcons = (cardElement, status) => {
+    const iconsContainer = document.createElement('div')
+    iconsContainer.className = css.iconsContainer
+    const checkIcon = checkIconComponent({
+        className: `${css.selectCircle} ${
+            status === CardStatus.DEFAULT && css.circleSelected
+        }`,
+    })
+    const trashIcon = trashIconComponent({ id: css.trashIcon })
+    trashIcon.addEventListener('click', () => handleTrashClick(trashIcon))
+    iconsContainer.appendChild(checkIcon)
+    iconsContainer.appendChild(trashIcon)
+    cardElement.appendChild(iconsContainer)
+}
+
+const handleTrashClick = trashIcon => {
+    const removingCard = trashIcon.parentElement.parentElement
+    removingCard.remove()
+    const addCard = addCardComponent()
+    const cardSectionElement = document.querySelector(
+        '#card-choose-form-cards-section'
+    )
+    cardSectionElement.appendChild(addCard)
 }
 
 export const setupCardContainerClickListener = cardElement => {

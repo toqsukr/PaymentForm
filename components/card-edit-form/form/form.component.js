@@ -28,6 +28,7 @@ const applyFormSubmitListener = form => {
         const cardNumber = form.elements['cardNumber'].value
         const code = form.elements['code'].value
         const paymentSystem = detectPaymentSystem(cardNumber)
+        const cards = getFromStorage('cards')
 
         addNewCard({
             cardExpires: expiration,
@@ -36,6 +37,9 @@ const applyFormSubmitListener = form => {
             code,
             paymentSystem,
         })
+        if (cards.length === 4) {
+            document.getElementById('add-card-container').remove()
+        }
         clearInputs(form)
     })
 }
@@ -61,13 +65,11 @@ export const detectPaymentSystem = cardNumber => {
 const addNewCard = ({ cardExpires, cardNumber, name, code, paymentSystem }) => {
     const data = { cardExpires, cardNumber, name, code, paymentSystem }
     const cards = getFromStorage('cards')
-    if (cards.length < 4) {
-        cards.push({
-            ...data,
-            imageURL: `/images/${paymentSystem}.png`,
-            status: CardStatus.NOTDEFAULT,
-        })
-        saveToStorage(cards, 'cards')
-        appendCards()
-    }
+    cards.push({
+        ...data,
+        imageURL: `/images/${paymentSystem}.png`,
+        status: CardStatus.NOTDEFAULT,
+    })
+    saveToStorage(cards, 'cards')
+    appendCards()
 }
