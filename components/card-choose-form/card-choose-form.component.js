@@ -22,7 +22,7 @@ export const appendCards = () => {
     )
     cardSectionElement.innerHTML = ''
     const cards = getFromStorage('cards')
-    cards.forEach(cardData => {
+    cards?.forEach(cardData => {
         const card = cardComponent(cardData)
         cardSectionElement.appendChild(card)
     })

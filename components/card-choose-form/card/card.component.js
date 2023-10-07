@@ -1,5 +1,13 @@
-import { CardStatus, PaymentSystem } from '../card-choose-form.data'
+import { CardStatus } from '../card-choose-form.data'
 import css from './card.module.css'
+
+const cardStyles = {
+    visa: css.visaIcon,
+    mastercard: css.mastercardIcon,
+    paypal: css.paypalIcon,
+    mir: css.mirIcon,
+    unionpay: css.unionpayIcon,
+}
 
 export const cardComponent = ({
     status,
@@ -12,13 +20,7 @@ export const cardComponent = ({
         <div class=${css.cardDataContainer}>
             <div class=${css.cardData}>
                 <img
-                    id=${
-                        paymentSystem === PaymentSystem.VISA
-                            ? css.visaIcon
-                            : paymentSystem === PaymentSystem.MASTERCARD
-                            ? css.mastercardIcon
-                            : css.paypalIcon
-                    }
+                    id=${cardStyles[paymentSystem]}
                     src=${imageURL}
                     alt='' />
                 <span id=${css.cardNumber}>${cardNumber}</span>
@@ -58,7 +60,7 @@ export const cardComponent = ({
 
 export const setupCardContainerClickListener = cardElement => {
     const handleClick = () => {
-        const lastElement = document.querySelector(`.${css.cardSelected}`)
+        let lastElement = document.querySelector(`.${css.cardSelected}`)
         if (cardElement.id != 'add-card-container') deleteCardEditForm()
         if (!cardElement.classList.contains(css.cardSelected)) {
             if (lastElement) {
