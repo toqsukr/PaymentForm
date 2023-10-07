@@ -37,7 +37,7 @@ const applyFormSubmitListener = form => {
             code,
             paymentSystem,
         })
-        if (cards.length === 4) {
+        if (cards && cards.length === 4) {
             document.getElementById('add-card-container').remove()
         }
         clearInputs(form)
@@ -54,7 +54,6 @@ const clearInputs = form => {
 export const detectPaymentSystem = cardNumber => {
     cardNumber = cardNumber.replace(/[\s\-]/g, '')
     for (const system in cardPatterns) {
-        console.log(system, cardPatterns[system])
         if (cardPatterns[system].test(cardNumber)) {
             return system
         }
@@ -64,12 +63,15 @@ export const detectPaymentSystem = cardNumber => {
 
 const addNewCard = ({ cardExpires, cardNumber, name, code, paymentSystem }) => {
     const data = { cardExpires, cardNumber, name, code, paymentSystem }
-    const cards = getFromStorage('cards')
-    cards.push({
-        ...data,
-        imageURL: `/images/${paymentSystem}.png`,
-        status: CardStatus.NOTDEFAULT,
-    })
-    saveToStorage(cards, 'cards')
-    appendCards()
+    let cards = getFromStorage('cards')
+    if (!cards || cards.length < 4) {
+        if (!cards) cards = []
+        cards.push({
+            ...data,
+            imageURL: `/images/${paymentSystem}.png`,
+            status: CardStatus.NOTDEFAULT,
+        })
+        saveToStorage(cards, 'cards')
+        appendCards()
+    }
 }

@@ -1,3 +1,4 @@
+import { getFromStorage, saveToStorage } from '../../../utils/functions'
 import { addCardComponent } from '../addCard/addCard.component'
 import { CardStatus } from '../card-choose-form.data'
 import css from './card.module.css'
@@ -37,6 +38,7 @@ export const cardComponent = ({
     cardElement.className = `${css.cardContainer} ${
         status === CardStatus.DEFAULT && css.cardSelected
     }`
+    cardElement.id = cardNumber
     cardElement.innerHTML = cardContent
 
     appendIcons(cardElement, status)
@@ -62,12 +64,23 @@ const appendIcons = (cardElement, status) => {
 
 const handleTrashClick = trashIcon => {
     const removingCard = trashIcon.parentElement.parentElement
+    console.log(removingCard)
+    const cards = getFromStorage('cards')
+    if (cards && cards.length === 4) {
+        const addCard = addCardComponent()
+        const cardSectionElement = document.querySelector(
+            '#card-choose-form-cards-section'
+        )
+        cardSectionElement.appendChild(addCard)
+    }
+    deleteFromCards(removingCard)
     removingCard.remove()
-    const addCard = addCardComponent()
-    const cardSectionElement = document.querySelector(
-        '#card-choose-form-cards-section'
-    )
-    cardSectionElement.appendChild(addCard)
+}
+
+const deleteFromCards = removingCard => {
+    const cards = getFromStorage('cards')
+    const newCards = cards.filter(card => removingCard.id != card.cardNumber)
+    saveToStorage(newCards, 'cards')
 }
 
 export const setupCardContainerClickListener = cardElement => {

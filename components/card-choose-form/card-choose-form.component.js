@@ -26,7 +26,7 @@ export const appendCards = () => {
         const card = cardComponent(cardData)
         cardSectionElement.appendChild(card)
     })
-    if (cards.length < 4) {
+    if (!cards || cards.length < 4) {
         const addCard = addCardComponent()
         cardSectionElement.appendChild(addCard)
     }
