@@ -32,6 +32,8 @@ const appendInputs = () => {
     )
     inputs.forEach(inputData => {
         const input = inputComponent(inputData)
+        if (inputData.name != 'cardNumber')
+            input.addEventListener('paste', e => e.preventDefault())
         cardEditFormEditorElement.appendChild(input)
     })
 }

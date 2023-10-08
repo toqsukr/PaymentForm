@@ -42,9 +42,33 @@ function validateCardNumber() {
 }
 
 function validateExpirationDate() {
-    this.value = this.value
-        .replace(/\D/g, '')
-        .replace(/(\d{2})(\d{0,2})/, '$1/$2')
+    // Удаляем все нецифровые символы
+    this.value = this.value.replace(/\D/g, '')
+
+    // Если первая цифра не 0 или 1, добавляем 0 в начало
+    if (/^[2-9]$/.test(this.value.charAt(0))) {
+        this.value = '0' + this.value
+    }
+
+    // Проверяем, что месяц находится в диапазоне от 01 до 12
+    this.value = this.value.replace(/^(\d{2})(\d{0,2})$/, (match, p1, p2) => {
+        if (parseInt(p1) > 12) {
+            return '12/' + p2
+        } else if (p1 === '00') {
+            return '01/' + p2
+        } else {
+            return p1 + '/' + p2
+        }
+    })
+
+    // Проверяем, что год не меньше 23
+    this.value = this.value.replace(/(\d{2})(\d{0,2})$/, (match, p1, p2) => {
+        if (parseInt(p1) < 23) {
+            return '23' + p2
+        } else {
+            return p1 + p2
+        }
+    })
 }
 
 function validateCVV() {
