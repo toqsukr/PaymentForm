@@ -73,7 +73,7 @@ const addNewCard = ({ cardExpires, cardNumber, name, code, paymentSystem }) => {
       status: CardStatus.NOTDEFAULT,
     })
     saveToStorage(cards, 'cards')
-    appendCards()
+    appendCards(document)
     deleteCardEditForm()
   }
 }

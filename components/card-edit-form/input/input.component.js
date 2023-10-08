@@ -1,14 +1,6 @@
 import css from './input.module.css'
 
-export const inputComponent = ({
-  label,
-  type,
-  name,
-  placeholder,
-  oninput,
-  maxlength,
-  id,
-}) => {
+export const inputComponent = ({ label, type, name, placeholder, oninput, maxlength, id }) => {
   const inputContent = `
         <span>${label}</span>
   `

@@ -1,4 +1,4 @@
-import { cardEditForm } from '../../card-edit-form/card-edit-form.component'
+import { cardEditFormComponent } from '../../card-edit-form/card-edit-form.component'
 import { setupCardContainerClickListener } from '../card/card.component'
 import css from '../card/card.module.css'
 
@@ -29,13 +29,12 @@ export const addCardComponent = () => {
 }
 
 const setupAddCardContainerClickListener = addCardElement => {
-  addCardElement.addEventListener('click', () => {
-    if (!document.querySelector('.card-edit-form-container'))
-      cardEditForm().then(() => {
-        const editCardForm = document.querySelector('.card-edit-form-container')
-        setTimeout(() => {
-          editCardForm.classList.add('edit-form-show')
-        }, 300)
-      })
+  addCardElement.addEventListener('click', async () => {
+    if (!document.querySelector('.card-edit-form-container')) {
+      const cardEditForm = await cardEditFormComponent()
+      document.querySelector('#app-inner-container').appendChild(cardEditForm)
+      const editCardForm = document.querySelector('.card-edit-form-container')
+      setTimeout(() => editCardForm.classList.add('edit-form-show'), 300)
+    }
   })
 }

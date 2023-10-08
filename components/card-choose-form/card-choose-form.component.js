@@ -4,19 +4,19 @@ import { addCardComponent } from './addCard/addCard.component'
 import './card-choose-form.style.css'
 import { cardComponent } from './card/card.component'
 
-export const cardChooseForm = async () => {
+export const cardChooseFormComponent = async () => {
   const moduleUrl = new URL('./card-choose-form.template.html', import.meta.url)
   const data = await (await fetch(moduleUrl)).text()
-  document.querySelector('#card-choose-form-container').innerHTML = data
-
-  appendCards()
-  appendButton()
+  const cardChooseFormElement = document.createElement('section')
+  cardChooseFormElement.id = 'card-choose-form-container'
+  cardChooseFormElement.innerHTML = data
+  appendCards(cardChooseFormElement)
+  appendButton(cardChooseFormElement)
+  return cardChooseFormElement
 }
 
-export const appendCards = () => {
-  const cardSectionElement = document.querySelector(
-    '#card-choose-form-cards-section'
-  )
+export const appendCards = parentContainer => {
+  const cardSectionElement = parentContainer.querySelector('#card-choose-form-cards-section')
   cardSectionElement.innerHTML = ''
   const cards = getFromStorage('cards')
   cards?.forEach(cardData => {
@@ -29,8 +29,7 @@ export const appendCards = () => {
   }
 }
 
-const appendButton = () => {
-  const parentContainer = document.querySelector('#card-choose-form-container')
+const appendButton = parentContainer => {
   const submitButton = buttonComponent({ text: 'Submit' })
 
   parentContainer.appendChild(submitButton)
