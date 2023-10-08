@@ -108,7 +108,7 @@ export const setupCardContainerClickListener = cardElement => {
     cardElement.addEventListener('click', () => handleClick())
 }
 
-const deleteCardEditForm = () => {
+export const deleteCardEditForm = () => {
     const appInnerContainer = document.querySelector('#app-inner-container')
     const editCardForm = document.querySelector('.card-edit-form-container')
     if (editCardForm) {

@@ -5,6 +5,7 @@ import {
     PaymentSystem,
     cardPatterns,
 } from '../../card-choose-form/card-choose-form.data'
+import { deleteCardEditForm } from '../../card-choose-form/card/card.component'
 import css from './form.module.css'
 
 export const formComponent = () => {
@@ -73,5 +74,6 @@ const addNewCard = ({ cardExpires, cardNumber, name, code, paymentSystem }) => {
         })
         saveToStorage(cards, 'cards')
         appendCards()
+        deleteCardEditForm()
     }
 }

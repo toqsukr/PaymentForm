@@ -9,6 +9,7 @@
     border: 2px solid #bcbcbc;
     border-radius: 8px;
     cursor: pointer;
+    min-height: 84px;
 }
 
 .cardSelected {
