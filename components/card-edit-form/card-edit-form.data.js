@@ -1,47 +1,80 @@
+import {
+  CARD_NUMBER_INPUT_MAX_LENGTH,
+  CODE_INPUT_MAX_LENGTH,
+  EXPIRATION_INPUT_MAX_LENGTH,
+  NAME_INPUT_MAX_LENGTH,
+} from '../../utils/constants'
+import { PaymentSystem } from '../card-choose-form/card-choose-form.data'
+import { detectPaymentSystem } from './form/form.component'
+
 export const inputs = [
   {
     name: 'name',
     label: 'Name',
     type: 'text',
     placeholder: 'Name Surname',
-    maxlength: 50,
-    oninput: validateCardOwner,
+    maxlength: NAME_INPUT_MAX_LENGTH,
+    oninput: cardOwnerOnInput,
   },
   {
     name: 'expiration',
     label: 'Expiration',
     type: 'text',
     placeholder: 'MM/YY',
-    maxlength: 5,
-    oninput: validateExpirationDate,
+    maxlength: EXPIRATION_INPUT_MAX_LENGTH,
+    oninput: expirationDateOnInput,
   },
   {
     name: 'cardNumber',
     label: 'Card Number',
     type: 'text',
     placeholder: 'XXXX XXXX XXXX XXXX',
-    maxlength: 19,
-    oninput: validateCardNumber,
+    maxlength: CARD_NUMBER_INPUT_MAX_LENGTH,
+    oninput: cardNumberOnInput,
   },
   {
     name: 'code',
     label: 'CVV',
     type: 'password',
     placeholder: 'XXX',
-    maxlength: 3,
-    oninput: validateCVV,
+    maxlength: CODE_INPUT_MAX_LENGTH,
+    oninput: CVVOnInput,
   },
 ]
 
-function validateCardOwner() {
+export const cardEditStyles = {
+  visa: 'card-edit-form-visa-icon',
+  mastercard: 'card-edit-form-mastercard-icon',
+  paypal: 'card-edit-form-paypal-icon',
+  mir: 'card-edit-form-mir-icon',
+  unionpay: 'card-edit-form-unionpay-icon',
+}
+
+function cardOwnerOnInput() {
   this.value = this.value.replace(/[^a-zA-Z\s]/g, '')
+  let textContent
+  if (this.value.length === 0) textContent = 'Elijahs Popuass'
+  else textContent = this.value
+  document.getElementById('card-edit-form-card-owner').textContent = textContent
 }
 
-function validateCardNumber() {
+function cardNumberOnInput() {
   this.value = this.value.replace(/\D/g, '').replace(/(\d{4})(?=\d)/g, '$1 ')
+  let textContent
+  if (this.value.length === 0) textContent = '0000 0000 0000 0000'
+  else textContent = this.value
+  const paymentElement = document.querySelector('.card-edit-form-payment-system')
+  if (this.value.length === CARD_NUMBER_INPUT_MAX_LENGTH) {
+    const paymentSystem = detectPaymentSystem(this.value)
+    paymentElement.src = `/images/${paymentSystem}.${
+      paymentSystem === PaymentSystem.VISA ? 'jpg' : 'png'
+    }`
+    paymentElement.id = cardEditStyles[paymentSystem]
+  }
+  document.getElementById('card-edit-form-card-number').textContent = textContent
 }
 
-function validateExpirationDate() {
+function expirationDateOnInput() {
   // Удаляем все нецифровые символы
   this.value = this.value.replace(/\D/g, '')
 
@@ -69,8 +102,14 @@ function validateExpirationDate() {
       return p1 + p2
     }
   })
+
+  let textContent
+  if (this.value.length === 0) textContent = '09/25'
+  else textContent = this.value
+
+  document.getElementById('card-edit-form-card-expiration').textContent = textContent
 }
 
-function validateCVV() {
+function CVVOnInput() {
   this.value = this.value.replace(/\D/g, '')
 }

@@ -7,6 +7,7 @@ export const inputComponent = ({
   placeholder,
   oninput,
   maxlength,
+  id,
 }) => {
   const inputContent = `
         <span>${label}</span>
@@ -18,6 +19,7 @@ export const inputComponent = ({
   input.placeholder = placeholder
   input.maxLength = maxlength
   input.oninput = oninput
+  input.id = id
   const inputElement = document.createElement('div')
   inputElement.className = css.editorCell
   inputElement.innerHTML = inputContent

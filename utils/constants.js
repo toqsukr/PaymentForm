@@ -1,0 +1,4 @@
+export const NAME_INPUT_MAX_LENGTH = 26
+export const EXPIRATION_INPUT_MAX_LENGTH = 5
+export const CARD_NUMBER_INPUT_MAX_LENGTH = 19
+export const CODE_INPUT_MAX_LENGTH = 3
