@@ -1,113 +1,113 @@
 .card-edit-form-container {
-    display: flex;
-    flex-direction: column;
-    height: 580px;
-    width: 560px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: -3px 10px 10px 10px rgba(0, 0, 0, 0.3);
-    align-self: flex-end;
-    opacity: 0;
-    scale: 0;
-    transition: scale 0.5s, opacity 0.5s;
+  display: flex;
+  flex-direction: column;
+  height: 580px;
+  width: 560px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: -3px 10px 10px 10px rgba(0, 0, 0, 0.3);
+  align-self: flex-end;
+  opacity: 0;
+  scale: 0;
+  transition: scale 0.5s, opacity 0.5s;
 }
 
 .edit-form-show {
-    scale: 1;
-    opacity: 1;
-    transition: scale 0.5s, opacity 0.5s;
+  scale: 1;
+  opacity: 1;
+  transition: scale 0.5s, opacity 0.5s;
 }
 
 #card-edit-form-card-container {
-    height: 38%;
-    border-radius: 10px 10px 0 0;
-    background-color: #ffbfd7;
-    padding: 30px 90px;
+  height: 38%;
+  border-radius: 10px 10px 0 0;
+  background-color: #ffbfd7;
+  padding: 30px 90px;
 }
 
 #card-edit-form-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    background: linear-gradient(
-        to bottom right,
-        #1f144a 0%,
-        #7537c6 50%,
-        #eb0373 100%
-    );
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background: linear-gradient(
+    to bottom right,
+    #1f144a 0%,
+    #7537c6 50%,
+    #eb0373 100%
+  );
 }
 
 #card-edit-form-card span {
-    color: white;
+  color: white;
 }
 
 #card-edit-form-visa-icon {
-    rotate: -90deg;
-    width: 60px;
-    margin: 0 0 20px 0;
-    height: 18px;
-    justify-self: end;
-    align-self: flex-end;
+  rotate: -90deg;
+  width: 60px;
+  margin: 0 0 20px 0;
+  height: 18px;
+  justify-self: end;
+  align-self: flex-end;
 }
 
 #card-edit-form-chip-icon {
-    margin-left: 28px;
-    scale: 1.2;
+  margin-left: 28px;
+  scale: 1.2;
 }
 
 #card-edit-form-button-container {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 35px;
-    align-items: center;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+  align-items: center;
 }
 
 #card-edit-form-editor {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 30px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 30px;
 }
 
 #card-edit-form-card-data-container {
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    gap: 20px;
-    padding: 20px;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 20px;
+  padding: 20px;
 }
 
 #card-edit-form-card-data-inner-container {
-    display: flex;
-    gap: 10px;
-    flex-direction: column;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
 }
 
 #card-edit-form-card-data-inner-upper-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 #card-edit-form-card-data-inner-lower-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 #card-edit-form-cancel-button {
-    background: white;
-    color: #613bee;
+  background: white;
+  color: #613bee;
 }
 
 input {
-    outline: none;
-    font-size: 16px;
-    border: 0;
-    background-color: #d9d9d9;
-    padding: 8px;
-    border-radius: 4px;
+  outline: none;
+  font-size: 16px;
+  border: 0;
+  background-color: #d9d9d9;
+  padding: 8px;
+  border-radius: 4px;
 }
