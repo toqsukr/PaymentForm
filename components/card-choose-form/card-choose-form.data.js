@@ -27,5 +27,3 @@ export const cardPatterns = {
   unionpay: /^(62|88)\d{14,17}$/,
   maestro: /^(5018|5020|5038|6304|6759|6761|6763)[0-9]{8,15}$/,
 }
-
-export const cards = []

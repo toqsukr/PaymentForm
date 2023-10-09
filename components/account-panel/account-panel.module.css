@@ -1,0 +1,37 @@
+#accountPanelContainer {
+  display: grid;
+  grid-template-rows: 20% 80%;
+  width: 500px;
+  height: 500px;
+  border-radius: 8px;
+  background: white;
+  border: 2px solid #bcbcbc;
+  font-family: 'Roboto Condensed';
+}
+
+#innerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto Condensed';
+  padding: 0 50px 50px 50px;
+}
+
+#accountTitle {
+  font-size: 45px;
+  text-align: center;
+  align-self: flex-end;
+}
+
+#addIcon {
+  width: 50px;
+  height: 50px;
+  padding: 20px;
+  transition: opacity 0.2s;
+}
+
+#addIcon:hover {
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}

@@ -1,5 +1,6 @@
 import { getFromStorage, saveToStorage } from '../../../utils/functions'
 import { addCardComponent } from '../addCard/addCard.component'
+import { getUserParam } from '../card-choose-form.component'
 import { CardStatus } from '../card-choose-form.data'
 import css from './card.module.css'
 import { checkIconComponent } from './checkIcon/checkIcon.component'
@@ -69,7 +70,7 @@ const handleTrashClick = trashIcon => {
 const deleteFromCards = removingCard => {
   const cards = getFromStorage('cards')
   const newCards = cards.filter(card => removingCard.id != card.cardNumber)
-  saveToStorage(newCards, 'cards')
+  saveToStorage(newCards, getUserParam())
 }
 
 export const setupCardContainerClickListener = cardElement => {

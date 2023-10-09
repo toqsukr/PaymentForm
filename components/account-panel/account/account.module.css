@@ -1,0 +1,39 @@
+.accountContainer {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 50px 1fr;
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid white;
+  border-left: 0;
+  border-right: 0;
+  text-decoration: none;
+  transition: border 0.2s;
+}
+
+.accountContainer:hover {
+  border: 1px solid #989898;
+  border-left: 0;
+  border-right: 0;
+  transition: border 0.2s;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  color: rgb(53, 53, 53);
+}
+
+#name {
+  font-size: 24px;
+  color: #6246bc;
+  border-bottom: 1 solid #989898;
+}
+
+#image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  justify-self: center;
+}

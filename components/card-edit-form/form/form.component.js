@@ -1,5 +1,5 @@
 import { getFromStorage, saveToStorage } from '../../../utils/functions'
-import { appendCards } from '../../card-choose-form/card-choose-form.component'
+import { appendCards, getUserParam } from '../../card-choose-form/card-choose-form.component'
 import {
   CardStatus,
   PaymentSystem,
@@ -29,7 +29,7 @@ const applyFormSubmitListener = form => {
     const cardNumber = form.elements['cardNumber'].value
     const code = form.elements['code'].value
     const paymentSystem = detectPaymentSystem(cardNumber)
-    const cards = getFromStorage('cards')
+    const cards = getFromStorage(getUserParam())
 
     addNewCard({
       cardExpires: expiration,
@@ -64,7 +64,7 @@ export const detectPaymentSystem = cardNumber => {
 
 const addNewCard = ({ cardExpires, cardNumber, name, code, paymentSystem }) => {
   const data = { cardExpires, cardNumber, name, code, paymentSystem }
-  let cards = getFromStorage('cards')
+  let cards = getFromStorage(getUserParam())
   if (!cards || cards.length < 4) {
     if (!cards) cards = []
     cards.push({
@@ -72,7 +72,7 @@ const addNewCard = ({ cardExpires, cardNumber, name, code, paymentSystem }) => {
       imageURL: `/images/${paymentSystem}.png`,
       status: CardStatus.NOTDEFAULT,
     })
-    saveToStorage(cards, 'cards')
+    saveToStorage(cards, getUserParam())
     appendCards(document)
     deleteCardEditForm()
   }

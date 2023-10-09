@@ -18,7 +18,7 @@ export const cardChooseFormComponent = async () => {
 export const appendCards = parentContainer => {
   const cardSectionElement = parentContainer.querySelector('#card-choose-form-cards-section')
   cardSectionElement.innerHTML = ''
-  const cards = getFromStorage('cards')
+  const cards = getFromStorage(getUserParam())
   cards?.forEach(cardData => {
     const card = cardComponent(cardData)
     cardSectionElement.appendChild(card)
@@ -33,4 +33,14 @@ const appendButton = parentContainer => {
   const submitButton = buttonComponent({ text: 'Submit' })
 
   parentContainer.appendChild(submitButton)
+}
+
+export const getUserParam = () => {
+  const hash = window.location.hash
+  const match = hash.match(/email=([^&]+)/)
+  if (match) {
+    return decodeURIComponent(match[1])
+  } else {
+    return null
+  }
 }
