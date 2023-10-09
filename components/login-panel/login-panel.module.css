@@ -1,13 +1,14 @@
 #mainContainer {
   display: grid;
-  grid-template-rows: 2fr 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
   align-items: center;
   background: white;
   border: 2px solid #bcbcbc;
   border-radius: 8px;
-  width: 500px;
-  height: 500px;
-  font-family: 'Roboto Condensed';
+  width: 450px;
+  height: 300px;
+  font-family: 'Inter';
+  box-shadow: -3px 10px 10px 10px rgba(0, 0, 0, 0.3);
 }
 
 #loginLink {
@@ -26,11 +27,12 @@
   color: white;
   align-self: center;
   justify-self: center;
+  font-family: 'Roboto Condensed';
 }
 
 #title {
   display: flex;
   color: black;
-  font-size: 45px;
+  font-size: 40px;
   justify-self: center;
 }

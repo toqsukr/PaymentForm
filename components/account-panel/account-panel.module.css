@@ -6,7 +6,8 @@
   border-radius: 8px;
   background: white;
   border: 2px solid #bcbcbc;
-  font-family: 'Roboto Condensed';
+  font-family: 'Inter';
+  box-shadow: -3px 10px 10px 10px rgba(0, 0, 0, 0.3);
 }
 
 #innerContainer {
@@ -14,12 +15,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: 'Roboto Condensed';
+  font-family: 'Inter';
   padding: 0 50px 50px 50px;
 }
 
 #accountTitle {
-  font-size: 45px;
+  font-size: 30px;
   text-align: center;
   align-self: flex-end;
 }
@@ -29,6 +30,7 @@
   height: 50px;
   padding: 20px;
   transition: opacity 0.2s;
+  cursor: pointer;
 }
 
 #addIcon:hover {
