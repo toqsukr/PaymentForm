@@ -1,31 +1,50 @@
 import { getFromStorage } from '../../utils/functions'
 import { buttonComponent } from '../ui/button/button.component'
+import { headerComponent } from '../ui/header/header.component'
+import { navigationComponent } from '../ui/navigation/navigation.component'
 import { addCardComponent } from './addCard/addCard.component'
 import './card-choose-form.style.css'
 import { cardComponent } from './card/card.component'
 
 export const cardChooseFormComponent = async () => {
-  const moduleUrl = new URL('./card-choose-form.template.html', import.meta.url)
-  const data = await (await fetch(moduleUrl)).text()
   const cardChooseFormElement = document.createElement('section')
   cardChooseFormElement.id = 'card-choose-form-container'
-  cardChooseFormElement.innerHTML = data
-  appendCards(cardChooseFormElement)
+
+  const cardChooseFormCardSection = document.createElement('section')
+  cardChooseFormCardSection.id = 'card-choose-form-cards-section'
+
+  appendNav(cardChooseFormElement)
+  appendHeader(cardChooseFormElement)
+  appendCards(cardChooseFormCardSection)
+
+  cardChooseFormElement.appendChild(cardChooseFormCardSection)
+
   appendButton(cardChooseFormElement)
   return cardChooseFormElement
 }
 
+const appendHeader = parentContainer => {
+  const headerElement = headerComponent('Choose your payment method')
+  console.log(headerElement)
+  parentContainer.appendChild(headerElement)
+}
+
+const appendNav = parentContainer => {
+  const navigationElement = navigationComponent()
+  console.log(navigationElement)
+  parentContainer.appendChild(navigationElement)
+}
+
 export const appendCards = parentContainer => {
-  const cardSectionElement = parentContainer.querySelector('#card-choose-form-cards-section')
-  cardSectionElement.innerHTML = ''
+  parentContainer.innerHTML = ''
   const cards = getFromStorage('cards')
   cards?.forEach(cardData => {
     const card = cardComponent(cardData)
-    cardSectionElement.appendChild(card)
+    parentContainer.appendChild(card)
   })
   if (!cards || cards.length < 4) {
     const addCard = addCardComponent()
-    cardSectionElement.appendChild(addCard)
+    parentContainer.appendChild(addCard)
   }
 }
 
