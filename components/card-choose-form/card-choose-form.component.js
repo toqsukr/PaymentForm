@@ -33,7 +33,9 @@ const appendNav = parentContainer => {
   parentContainer.appendChild(navigationElement)
 }
 
-export const appendCards = parentContainer => {
+export const appendCards = (
+  parentContainer = document.getElementById('card-choose-form-cards-section')
+) => {
   parentContainer.innerHTML = ''
   const cards = getFromStorage('cards')
   cards?.forEach(cardData => {

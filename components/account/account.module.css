@@ -1,0 +1,30 @@
+#accountSection {
+  width: 400px;
+  height: 430px;
+  padding: 45px 70px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: -3px 10px 10px 10px rgba(0, 0, 0, 0.3);
+}
+
+#profileIcon {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+}
+
+#accountInnerContainer {
+  display: grid;
+  grid-template-rows: 1fr 0.5fr;
+  gap: 50px;
+  padding: 30px 20px;
+}
+
+#paymentMethodsLink {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border: 1px solid #989898;
+}

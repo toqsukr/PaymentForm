@@ -12,10 +12,16 @@
   text-decoration: none;
 }
 
+.navContainer a:hover {
+  text-decoration: underline;
+}
+
 .account a:first-child {
   color: #7f18ff;
+  text-decoration: none;
 }
 
 .paymentMethods a:last-child {
   color: #7f18ff;
+  text-decoration: none;
 }
