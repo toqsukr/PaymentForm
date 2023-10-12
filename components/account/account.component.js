@@ -1,13 +1,12 @@
 import { Routes } from '../../utils/routes'
+import { headerComponent } from '../ui/header/header.component'
 import css from './account.module.css'
 
 export const accountComponent = async () => {
   const accountSectionElement = document.createElement('section')
   accountSectionElement.id = css.accountSection
 
-  const accountHeaderElement = document.createElement('span')
-  accountHeaderElement.textContent = 'Account'
-  accountHeaderElement.id = css.accountHeader
+  const accountHeaderElement = headerComponent('Account')
 
   const paymentMethodsLink = document.createElement('a')
   paymentMethodsLink.id = css.paymentMethodsLink

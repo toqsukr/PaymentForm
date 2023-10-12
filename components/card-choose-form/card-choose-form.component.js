@@ -25,13 +25,11 @@ export const cardChooseFormComponent = async () => {
 
 const appendHeader = parentContainer => {
   const headerElement = headerComponent('Choose your payment method')
-  console.log(headerElement)
   parentContainer.appendChild(headerElement)
 }
 
 const appendNav = parentContainer => {
   const navigationElement = navigationComponent()
-  console.log(navigationElement)
   parentContainer.appendChild(navigationElement)
 }
 
