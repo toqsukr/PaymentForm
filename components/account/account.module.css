@@ -1,4 +1,6 @@
 #accountSection {
+  display: grid;
+  grid-template-rows: 0.5fr 5fr;
   width: 400px;
   height: 430px;
   padding: 45px 70px;
@@ -14,10 +16,10 @@
 }
 
 #accountInnerContainer {
-  display: grid;
-  grid-template-rows: 1fr 0.5fr;
-  gap: 50px;
-  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 0 20px;
 }
 
 #paymentMethodsLink {
@@ -27,4 +29,56 @@
   align-items: center;
   text-decoration: none;
   border: 1px solid #989898;
+}
+
+#profileInfoContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  align-items: center;
+}
+
+#accountMainDataText {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  gap: 5px;
+  color: #787878;
+  text-align: start;
+}
+
+#nameText {
+  font-size: 24px;
+  color: #7f18ff;
+}
+
+#otherInfoContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.otherInfoInnerContainer {
+  display: flex;
+  justify-content: space-between;
+  color: #787878;
+  padding: 5px;
+}
+
+.otherInfoInnerContainer span:first-child {
+  color: black;
+}
+
+#paymentCardContainer {
+  text-decoration: none;
+}
+
+#paymentCardContainer span:first-child {
+  color: black;
+  transition: color 0.3s;
+}
+
+#paymentCardContainer:hover span:first-child {
+  color: #7f18ff;
+  transition: color 0.3s;
 }

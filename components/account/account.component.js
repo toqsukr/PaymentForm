@@ -1,41 +1,42 @@
 import { Routes } from '../../utils/routes'
 import { headerComponent } from '../ui/header/header.component'
-import { navigationComponent } from '../ui/navigation/navigation.component'
+import { accountData } from './account.data'
 import css from './account.module.css'
 
 export const accountComponent = async () => {
+  const accountInnerContent = `  
+      <div id=${css.profileInfoContainer}>
+        <img id=${css.profileIcon} src=${accountData.profileIconURL} />
+        <div id=${css.accountMainDataText}>
+          <span id=${css.nameText}>${accountData.name}</span>
+          <span>${accountData.email}</span>
+        </div>
+      </div>
+      <div id=${css.otherInfoContainer}>
+        <div class=${css.otherInfoInnerContainer}>
+          <span>Phone number</span>
+          <span>${accountData.phoneNumber}</span>
+        </div>
+        <div class=${css.otherInfoInnerContainer}>
+          <span>Payment region</span>
+          <span>${accountData.paymentRegion}</span>
+        </div>
+        <a href=${Routes.PAYMENT_METHODS} class=${css.otherInfoInnerContainer} id=${css.paymentCardContainer}>
+          <span>Payment method</span>
+          <span>**** **** **** 4928</span>
+        </a>
+      </div>
+  `
+
   const accountSectionElement = document.createElement('section')
   accountSectionElement.id = css.accountSection
 
   const accountHeaderElement = headerComponent('Account')
 
-  const paymentMethodsLink = document.createElement('a')
-  paymentMethodsLink.id = css.paymentMethodsLink
-  paymentMethodsLink.href = Routes.PAYMENT_METHODS
-
-  const paymentMethodsLinkText = document.createElement('span')
-  paymentMethodsLinkText.textContent = 'Payment Methods'
-
-  paymentMethodsLink.appendChild(paymentMethodsLinkText)
-
-  const navigationElement = navigationComponent()
-
   const accountInnerContainer = document.createElement('div')
   accountInnerContainer.id = css.accountInnerContainer
+  accountInnerContainer.innerHTML = accountInnerContent
 
-  const profileInfoContainerElement = document.createElement('div')
-  profileInfoContainerElement.id = css.profileInfoContainer
-
-  const profileIconElement = document.createElement('img')
-  profileIconElement.id = css.profileIcon
-  profileIconElement.src = '/images/profile_photo.jpg'
-
-  profileInfoContainerElement.appendChild(profileIconElement)
-
-  accountInnerContainer.appendChild(profileInfoContainerElement)
-  accountInnerContainer.appendChild(paymentMethodsLink)
-
-  accountSectionElement.appendChild(navigationElement)
   accountSectionElement.appendChild(accountHeaderElement)
   accountSectionElement.appendChild(accountInnerContainer)
 
