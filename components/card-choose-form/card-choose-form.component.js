@@ -1,10 +1,11 @@
 import { getFromStorage } from '../../utils/functions'
+import { Routes } from '../../utils/routes'
 import { buttonComponent } from '../ui/button/button.component'
 import { headerComponent } from '../ui/header/header.component'
 import { navigationComponent } from '../ui/navigation/navigation.component'
 import { addCardComponent } from './addCard/addCard.component'
 import './card-choose-form.style.css'
-import { cardComponent } from './card/card.component'
+import { cardComponent, setDefaultCard } from './card/card.component'
 
 export const cardChooseFormComponent = async () => {
   const cardChooseFormElement = document.createElement('section')
@@ -49,7 +50,14 @@ export const appendCards = (
 }
 
 const appendButton = parentContainer => {
-  const submitButton = buttonComponent({ text: 'Submit' })
+  const submitButton = buttonComponent({ text: 'Submit', HTMLElement: 'a' })
+  submitButton.href = Routes.HOME
+  submitButton.addEventListener('click', event => {
+    event.preventDefault()
 
+    setTimeout(() => setDefaultCard())
+
+    window.location.href = event.currentTarget.getAttribute('href')
+  })
   parentContainer.appendChild(submitButton)
 }

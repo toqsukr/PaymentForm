@@ -24,7 +24,7 @@ export const cardComponent = ({ status, paymentSystem, imageURL, cardNumber, car
           <span style="font-size: 14px; align-self: center">Expires</span>
           <div class=${css.cardOtherData}>
               <span style="font-weight: 600; font-style: italic">${cardExpires}</span>
-              <span style="font-weight: bold">${status}</span>
+              <span id=${css.cardStatus}>${status}</span>
           </div>
       </div>
       `
@@ -80,11 +80,13 @@ export const setupCardContainerClickListener = cardElement => {
       if (lastElement) {
         if (lastElement.querySelector(`.${css.selectCircle}`)) {
           lastElement.querySelector(`.${css.selectCircle}`).classList.remove(css.circleSelected)
+          lastElement.querySelector('#' + css.cardStatus).textContent = CardStatus.NOTDEFAULT
         }
         lastElement.classList.remove(css.cardSelected)
       }
       cardElement.classList.add(css.cardSelected)
       if (cardElement.querySelector(`.${css.selectCircle}`)) {
+        cardElement.querySelector('#' + css.cardStatus).textContent = CardStatus.DEFAULT
         cardElement.querySelector(`.${css.selectCircle}`).classList.add(css.circleSelected)
       }
       lastElement = cardElement
@@ -102,4 +104,16 @@ export const deleteCardEditForm = () => {
       appInnerContainer.removeChild(editCardForm)
     }, 300)
   }
+}
+
+export const setDefaultCard = () => {
+  const parentContainer = document.getElementById('card-choose-form-cards-section')
+  const defaultCardNumber = parentContainer.querySelector('.' + css.cardSelected).id
+  const cards = getFromStorage('cards')
+  const newCards = cards?.map(card =>
+    card.cardNumber === defaultCardNumber
+      ? { ...card, status: CardStatus.DEFAULT }
+      : { ...card, status: CardStatus.NOTDEFAULT }
+  )
+  saveToStorage(newCards, 'cards')
 }

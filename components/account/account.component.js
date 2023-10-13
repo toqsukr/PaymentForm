@@ -1,4 +1,6 @@
+import { getFromStorage } from '../../utils/functions'
 import { Routes } from '../../utils/routes'
+import { CardStatus } from '../card-choose-form/card-choose-form.data'
 import { headerComponent } from '../ui/header/header.component'
 import { accountData } from './account.data'
 import css from './account.module.css'
@@ -21,9 +23,11 @@ export const accountComponent = async () => {
           <span>Payment region</span>
           <span>${accountData.paymentRegion}</span>
         </div>
-        <a href=${Routes.PAYMENT_METHODS} class=${css.otherInfoInnerContainer} id=${css.paymentCardContainer}>
+        <a href=${Routes.PAYMENT_METHODS} class=${css.otherInfoInnerContainer} id=${
+    css.paymentCardContainer
+  }>
           <span>Payment method</span>
-          <span>**** **** **** 4928</span>
+          <span>${getDefaultCardNumber()}</span>
         </a>
       </div>
   `
@@ -41,4 +45,15 @@ export const accountComponent = async () => {
   accountSectionElement.appendChild(accountInnerContainer)
 
   return accountSectionElement
+}
+
+const getDefaultCardNumber = () => {
+  const cards = getFromStorage('cards')
+  let defaultCardNumber = 'Not selected'
+  cards?.forEach(card => {
+    if (card.status === CardStatus.DEFAULT) {
+      defaultCardNumber = '**** '.repeat(3) + card.cardNumber.slice(-4)
+    }
+  })
+  return defaultCardNumber
 }
