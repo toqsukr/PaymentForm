@@ -1,3 +1,4 @@
+import { deleteCardEditForm } from '../card-choose-form/card/card.component'
 import { buttonComponent } from '../ui/button/button.component'
 import { inputs } from './card-edit-form.data'
 import './card-edit-form.style.css'
@@ -43,6 +44,11 @@ const appendButtons = parentElement => {
     text: 'Cancel',
     id: 'card-edit-form-cancel-button',
   })
+
+  cancelButton.addEventListener('click', () => {
+    deleteCardEditForm()
+  })
+
   parentContainer.appendChild(cancelButton)
   parentContainer.appendChild(submitButton)
 }
