@@ -1,6 +1,6 @@
 .headerContainer {
   text-align: center;
-  font-size: clamp(20px, var(--index), 30px);
+  font-size: clamp(20px, 1em, 30px);
 }
 
 @media (max-width: 420px) {

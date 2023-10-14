@@ -1,3 +1,15 @@
+#card-choose-form-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 430px;
+  min-width: 360px;
+  padding: 45px 70px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: -3px 10px 10px 10px rgba(0, 0, 0, 0.3);
+  z-index: 0;
+}
+
 .card-choose-form-card-container {
   display: flex;
   flex-direction: row;
@@ -9,16 +21,6 @@
   border: 2px solid #bcbcbc;
   border-radius: 8px;
   cursor: pointer;
-}
-#card-choose-form-container {
-  display: flex;
-  flex-direction: column;
-  max-width: 430px;
-  padding: 45px 70px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: -3px 10px 10px 10px rgba(0, 0, 0, 0.3);
-  z-index: 0;
 }
 
 #card-choose-form-cards-section {

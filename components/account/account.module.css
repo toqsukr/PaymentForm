@@ -44,14 +44,14 @@
   grid-row: 2/3;
   display: flex;
   flex-direction: column;
-  font-size: clamp(8px, var(--index) * 0.8, 14px);
+  font-size: clamp(8px, var(--index) * 0.6, 14px);
   gap: 5px;
   color: #787878;
   text-align: start;
 }
 
 #nameText {
-  font-size: clamp(16px, var(--index), 24px);
+  font-size: clamp(16px, var(--index) * 1.2, 24px);
   color: #7f18ff;
 }
 
@@ -68,7 +68,7 @@
   justify-content: space-between;
   color: #787878;
   padding: 5px;
-  font-size: clamp(12px, var(--index), 16px);
+  font-size: clamp(12px, var(--index) * 0.8, 16px);
 }
 
 .otherInfoInnerContainer span:first-child {
@@ -151,7 +151,7 @@
   }
 }
 
-@media (max-width: 330px) {
+@media (max-width: 360px) {
   #accountSection {
     padding: 40px 0;
     height: 100%;
