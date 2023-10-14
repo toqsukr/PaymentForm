@@ -7,13 +7,11 @@ import css from './account.module.css'
 
 export const accountComponent = async () => {
   const accountInnerContent = `  
-      <div id=${css.profileInfoContainer}>
         <img id=${css.profileIcon} src=${accountData.profileIconURL} />
         <div id=${css.accountMainDataText}>
           <span id=${css.nameText}>${accountData.name}</span>
           <span>${accountData.email}</span>
         </div>
-      </div>
       <div id=${css.otherInfoContainer}>
         <div class=${css.otherInfoInnerContainer}>
           <span>Phone number</span>
@@ -36,6 +34,7 @@ export const accountComponent = async () => {
   accountSectionElement.id = css.accountSection
 
   const accountHeaderElement = headerComponent('Account')
+  accountHeaderElement.id = css.accountHeader
 
   const accountInnerContainer = document.createElement('div')
   accountInnerContainer.id = css.accountInnerContainer
