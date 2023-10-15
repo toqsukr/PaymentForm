@@ -11,7 +11,6 @@
   opacity: 0;
   scale: 0;
   transition: scale 0.5s, opacity 0.5s;
-  margin: 20px;
 }
 
 .edit-form-show {
@@ -154,7 +153,7 @@ input {
   }
 }
 
-@media (max-width: 410px) {
+@media (max-width: 430px) {
   .card-edit-form-container {
     height: auto;
     max-height: none;
@@ -178,7 +177,8 @@ input {
 
   #card-edit-form-button-container {
     grid-template: 1fr 1fr / 1fr;
-    gap: 1.5rem;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
   }
 
