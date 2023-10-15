@@ -3,7 +3,7 @@ import { cardChooseFormComponent } from './components/card-choose-form/card-choo
 import './style.css'
 import { Routes } from './utils/routes'
 
-// redirect()
+redirect()
 
 const cardChooseForm = cardChooseFormComponent()
 const account = accountComponent()
