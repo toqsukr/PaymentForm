@@ -154,7 +154,7 @@ input {
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 410px) {
   .card-edit-form-container {
     height: auto;
     max-height: none;
