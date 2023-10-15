@@ -5,7 +5,7 @@ import { headerComponent } from '../ui/header/header.component'
 import { accountData } from './account.data'
 import css from './account.module.css'
 
-export const accountComponent = async () => {
+export const accountComponent = () => {
   const accountInnerContent = `  
         <img id=${css.profileIcon} src=${accountData.profileIconURL} />
         <div id=${css.accountMainDataText}>

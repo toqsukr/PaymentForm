@@ -6,8 +6,8 @@ import { Routes } from './utils/routes'
 
 redirect()
 
-const cardChooseForm = await cardChooseFormComponent()
-const account = await accountComponent()
+const cardChooseForm = cardChooseFormComponent()
+const account = accountComponent()
 
 const parentElement = document.getElementById('app-inner-container')
 

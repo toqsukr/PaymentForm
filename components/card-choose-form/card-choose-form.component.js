@@ -7,7 +7,7 @@ import { addCardComponent } from './addCard/addCard.component'
 import './card-choose-form.style.css'
 import { cardComponent, setDefaultCard } from './card/card.component'
 
-export const cardChooseFormComponent = async () => {
+export const cardChooseFormComponent = () => {
   const cardChooseFormElement = document.createElement('section')
   cardChooseFormElement.id = 'card-choose-form-container'
 
