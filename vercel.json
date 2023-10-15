@@ -1,7 +1,7 @@
 {
     "routes": [
-      { "src": "/account", "dest": "/dist/index.html" },
-      { "src": "/account/payment-methods", "dest": "/dist/index.html" }
+      { "src": "/", "dest": "/dist/index.html" },
+      { "src": "/payment-methods", "dest": "/dist/index.html" }
     ]
   }
   
