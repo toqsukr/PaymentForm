@@ -1,3 +1,8 @@
+import {
+  CARD_NUMBER_INPUT_MAX_LENGTH,
+  CODE_INPUT_MAX_LENGTH,
+  EXPIRATION_INPUT_MAX_LENGTH,
+} from '../../../utils/constants'
 import { getFromStorage, saveToStorage } from '../../../utils/functions'
 import { appendCards } from '../../card-choose-form/card-choose-form.component'
 import {
@@ -31,17 +36,23 @@ const applyFormSubmitListener = form => {
     const paymentSystem = detectPaymentSystem(cardNumber)
     const cards = getFromStorage('cards')
 
-    addNewCard({
-      cardExpires: expiration,
-      cardNumber,
-      name,
-      code,
-      paymentSystem,
-    })
-    if (cards && cards.length === 4) {
-      document.getElementById('add-card-container').remove()
-    }
-    clearInputs(form)
+    if (
+      cardNumber.length === CARD_NUMBER_INPUT_MAX_LENGTH &&
+      code.length === CODE_INPUT_MAX_LENGTH &&
+      expiration.length === EXPIRATION_INPUT_MAX_LENGTH
+    ) {
+      addNewCard({
+        cardExpires: expiration,
+        cardNumber,
+        name,
+        code,
+        paymentSystem,
+      })
+      if (cards && cards.length === 4) {
+        document.getElementById('add-card-container').remove()
+      }
+      clearInputs(form)
+    } else alert('Please make sure that all fields are filled in correctly')
   })
 }
 
