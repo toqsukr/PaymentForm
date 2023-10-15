@@ -1,10 +1,9 @@
 import { accountComponent } from './components/account/account.component'
 import { cardChooseFormComponent } from './components/card-choose-form/card-choose-form.component'
 import './style.css'
-import { redirect } from './utils/functions'
 import { Routes } from './utils/routes'
 
-redirect()
+// redirect()
 
 const cardChooseForm = cardChooseFormComponent()
 const account = accountComponent()
