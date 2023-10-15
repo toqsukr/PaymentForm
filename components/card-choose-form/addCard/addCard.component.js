@@ -5,8 +5,8 @@ import css from '../card/card.module.css'
 export const addCardComponent = () => {
   const addCardContent = `
     <svg
-      width="28"
-      height="24"
+      width='1.75rem'
+      height="1.5rem"
       viewBox="0 0 28 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg">

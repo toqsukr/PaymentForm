@@ -3,7 +3,7 @@
   flex-direction: row;
   align-items: center;
   gap: 5px;
-  margin: 0 0 0.75rem 0;
+  margin: 0 0 0.85rem 0;
   font-size: 0.875rem;
 }
 
@@ -24,4 +24,9 @@
 .paymentMethods a:last-child {
   color: #7f18ff;
   text-decoration: none;
+}
+
+#arrowIcon {
+  width: 1.125rem;
+  height: 1.125rem;
 }

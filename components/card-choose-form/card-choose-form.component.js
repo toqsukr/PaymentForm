@@ -11,16 +11,20 @@ export const cardChooseFormComponent = async () => {
   const cardChooseFormElement = document.createElement('section')
   cardChooseFormElement.id = 'card-choose-form-container'
 
+  const cardChooseContentContainer = document.createElement('div')
+  cardChooseContentContainer.id = 'card-choose-form-content-container'
+
   const cardChooseFormCardSection = document.createElement('section')
   cardChooseFormCardSection.id = 'card-choose-form-cards-section'
 
-  appendNav(cardChooseFormElement)
-  appendHeader(cardChooseFormElement)
+  appendNav(cardChooseContentContainer)
+  appendHeader(cardChooseContentContainer)
   appendCards(cardChooseFormCardSection)
-  appendButton(cardChooseFormCardSection)
 
-  cardChooseFormElement.appendChild(cardChooseFormCardSection)
+  cardChooseContentContainer.appendChild(cardChooseFormCardSection)
 
+  appendButton(cardChooseContentContainer)
+  cardChooseFormElement.appendChild(cardChooseContentContainer)
   return cardChooseFormElement
 }
 

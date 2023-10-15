@@ -99,7 +99,7 @@ export const deleteCardEditForm = () => {
   const appInnerContainer = document.querySelector('#app-inner-container')
   const addCardElement = document.getElementById('add-card-container')
   const editCardForm = document.querySelector('.card-edit-form-container')
-  if (addCardElement.classList.contains(css.cardSelected))
+  if (addCardElement && addCardElement.classList.contains(css.cardSelected))
     addCardElement.classList.remove(css.cardSelected)
   if (editCardForm) {
     editCardForm.classList.remove('edit-form-show')

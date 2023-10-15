@@ -34,16 +34,26 @@
   align-self: center;
 }
 
+#card-choose-form-content-container {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
 @media (max-width: 380px) {
   #card-choose-form-container {
     width: 100%;
     min-width: 280px;
-    padding: 1.5rem 0.8rem;
+    padding: 3rem 0.8rem;
     border-radius: 0;
     margin: 0;
   }
 
   #card-choose-form-cards-section {
     max-width: 300px;
+  }
+
+  #card-choose-form-content-container {
+    max-width: 290px;
   }
 }

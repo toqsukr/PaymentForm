@@ -2,8 +2,23 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 2fr 1fr;
-  gap: 35px;
+  gap: 2.1875rem;
   align-items: center;
   justify-content: space-between;
-  padding: 35px;
+  padding: 1.5rem;
+}
+
+@media (max-width: 400px) {
+  #dataContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 3rem;
+    max-width: 320px;
+    width: 100%;
+    align-self: center;
+  }
 }
