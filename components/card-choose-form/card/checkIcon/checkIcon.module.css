@@ -1,5 +1,7 @@
 #selectIcon {
   position: absolute;
-  top: 5px;
-  left: 3px;
+  top: calc(50% - 0.5rem / 2);
+  left: calc(50% - 0.6rem / 2);
+  width: 0.625rem;
+  height: 0.5rem;
 }

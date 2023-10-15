@@ -88,7 +88,7 @@
   transition: color 0.3s;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 360px) {
   #accountInnerContainer {
     grid-template: 8.5rem 8.5rem /8.5rem 1fr;
   }

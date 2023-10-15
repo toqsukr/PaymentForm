@@ -17,10 +17,10 @@ export const cardChooseFormComponent = async () => {
   appendNav(cardChooseFormElement)
   appendHeader(cardChooseFormElement)
   appendCards(cardChooseFormCardSection)
+  appendButton(cardChooseFormCardSection)
 
   cardChooseFormElement.appendChild(cardChooseFormCardSection)
 
-  appendButton(cardChooseFormElement)
   return cardChooseFormElement
 }
 

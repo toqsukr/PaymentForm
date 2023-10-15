@@ -1,8 +1,8 @@
+import css from './trashIcon.module.css'
+
 export const trashIconComponent = ({ id }) => {
   const trashIconContent = `
   <svg
-    width="41"
-    height="48"
     viewBox="0 0 41 48"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ export const trashIconComponent = ({ id }) => {
   `
   const trashIconElement = document.createElement('span')
   trashIconElement.id = id
+  trashIconElement.className = css.trashIcon
   trashIconElement.innerHTML = trashIconContent
   return trashIconElement
 }

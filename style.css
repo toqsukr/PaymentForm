@@ -14,8 +14,9 @@
 #app-inner-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  width: 100%;
   max-width: 1180px;
   flex: 1 1 auto;
 }
