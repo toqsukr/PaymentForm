@@ -27,20 +27,19 @@ export const formComponent = () => {
 
 const applyFormSubmitListener = form => {
   form.addEventListener('submit', event => {
-    event.preventDefault()
+    try {
+      event.preventDefault()
 
-    const name = form.elements['name'].value
-    const expiration = form.elements['expiration'].value
-    const cardNumber = form.elements['cardNumber'].value
-    const code = form.elements['code'].value
-    const paymentSystem = detectPaymentSystem(cardNumber)
-    const cards = getFromStorage('cards')
+      const name = form.elements['name'].value
+      const expiration = form.elements['expiration'].value
+      const cardNumber = form.elements['cardNumber'].value
+      const code = form.elements['code'].value
+      const paymentSystem = detectPaymentSystem(cardNumber)
+      const cards = getFromStorage('cards')
 
-    if (
-      cardNumber.length === CARD_NUMBER_INPUT_MAX_LENGTH &&
-      code.length === CODE_INPUT_MAX_LENGTH &&
-      expiration.length === EXPIRATION_INPUT_MAX_LENGTH
-    ) {
+      isValidFullData(cardNumber, expiration, code)
+      isValidCreditCardNumber(cardNumber)
+
       addNewCard({
         cardExpires: expiration,
         cardNumber,
@@ -52,7 +51,9 @@ const applyFormSubmitListener = form => {
         document.getElementById('add-card-container').remove()
       }
       clearInputs(form)
-    } else alert('Please make sure that all fields are filled in correctly')
+    } catch (error) {
+      alert(error.message) // Вывод сообщения об ошибке
+    }
   })
 }
 
@@ -86,5 +87,33 @@ const addNewCard = ({ cardExpires, cardNumber, name, code, paymentSystem }) => {
     saveToStorage(cards, 'cards')
     appendCards()
     deleteCardEditForm()
+  }
+}
+
+const isValidFullData = (cardNumber, expiration, code) => {
+  if (cardNumber.length !== CARD_NUMBER_INPUT_MAX_LENGTH)
+    throw new Error('Card number is too short')
+  if (code.length !== CODE_INPUT_MAX_LENGTH) throw new Error('CVV code is too short')
+  if (expiration.length !== EXPIRATION_INPUT_MAX_LENGTH)
+    throw new Error('Expiration date is too short')
+}
+
+const isValidCreditCardNumber = cardNumber => {
+  cardNumber = cardNumber.replace(/\s/g, '')
+
+  const cardDigits = cardNumber.split('').map(Number)
+
+  for (let i = cardDigits.length - 2; i >= 0; i -= 2) {
+    cardDigits[i] *= 2
+
+    if (cardDigits[i] >= 10) {
+      cardDigits[i] -= 9
+    }
+  }
+
+  const sum = cardDigits.reduce((acc, digit) => acc + digit, 0)
+
+  if (sum % 10 !== 0) {
+    throw new Error('Сard number is incorrect')
   }
 }
