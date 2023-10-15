@@ -31,7 +31,7 @@ const appendInputs = parentElement => {
     })
     const input = inputDiv.querySelector('input')
     input.required = true
-    if (inputData.name != 'cardNumber') input.addEventListener('paste', e => e.preventDefault())
+    input.addEventListener('paste', e => e.preventDefault())
     cardEditFormEditorElement.appendChild(input)
   })
 }

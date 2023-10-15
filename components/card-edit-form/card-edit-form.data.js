@@ -19,7 +19,7 @@ export const inputs = [
   {
     name: 'expiration',
     label: 'Expiration',
-    type: 'text',
+    type: 'tel',
     placeholder: 'MM/YY',
     maxlength: EXPIRATION_INPUT_MAX_LENGTH,
     oninput: expirationDateOnInput,
@@ -27,7 +27,7 @@ export const inputs = [
   {
     name: 'cardNumber',
     label: 'Card Number',
-    type: 'text',
+    type: 'tel',
     placeholder: 'XXXX XXXX XXXX XXXX',
     maxlength: CARD_NUMBER_INPUT_MAX_LENGTH,
     oninput: cardNumberOnInput,

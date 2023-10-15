@@ -1,26 +1,27 @@
 #accountSection {
   display: grid;
-  grid-template: 35px 1fr / 1fr;
-  min-width: 280px;
-  padding: 45px 70px;
-  background-color: white;
+  grid-template: 2.1875rem 1fr / 1fr;
+  row-gap: 0.625rem;
+  max-width: 500px;
+  max-height: 500px;
+  min-width: 300px;
+  min-height: 300px;
   border-radius: 10px;
+  background-color: white;
   box-shadow: -3px 10px 10px 10px rgba(0, 0, 0, 0.3);
+  padding: 2.8rem 3.75rem;
 }
 
 #profileIcon {
-  grid-row: 2/3;
-  width: 130px;
-  height: 130px;
-  min-width: 60px;
-  min-height: 60px;
+  width: 8rem;
+  height: 8rem;
   border-radius: 50%;
 }
 
 #accountInnerContainer {
   display: grid;
-  grid-template: 1fr 150px 180px 1fr / 150px 1fr;
-  gap: 20px;
+  grid-template: 9.375rem 11.25rem / 9.375rem 1fr;
+  gap: 0.5rem;
   align-items: center;
 }
 
@@ -36,31 +37,29 @@
 #profileInfoContainer {
   display: flex;
   flex-direction: row;
-  gap: 30px;
+  gap: 1.875rem;
   align-items: center;
 }
 
 #accountMainDataText {
-  grid-row: 2/3;
   display: flex;
   flex-direction: column;
-  font-size: clamp(8px, var(--index) * 0.6, 14px);
+  font-size: 0.8rem;
   gap: 5px;
   color: #787878;
   text-align: start;
 }
 
 #nameText {
-  font-size: clamp(16px, var(--index) * 1.2, 24px);
+  font-size: 1.4rem;
   color: #7f18ff;
 }
 
 #otherInfoContainer {
   grid-column: 1 / 3;
-  grid-row: 3/4;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.25rem;
 }
 
 .otherInfoInnerContainer {
@@ -68,7 +67,7 @@
   justify-content: space-between;
   color: #787878;
   padding: 5px;
-  font-size: clamp(12px, var(--index) * 0.8, 16px);
+  font-size: 1rem;
 }
 
 .otherInfoInnerContainer span:first-child {
@@ -89,103 +88,12 @@
   transition: color 0.3s;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 400px) {
   #accountInnerContainer {
-    grid-template: 1fr 120px 150px 1fr / 150px 1fr;
+    grid-template: 8.5rem 8.5rem /8.5rem 1fr;
   }
-}
-
-@media (max-width: 992px) {
-  #profileIcon {
-    width: clamp(100px, var(--index) * 2, 130px);
-    height: clamp(100px, var(--index) * 2, 130px);
-  }
-
-  #accountInnerContainer {
-    grid-template: 1fr 100px 130px 1fr / 130px 1fr;
-  }
-}
-
-@media (max-width: 767px) {
-  #accountInnerContainer {
-    grid-template: 1fr 80px 110px 1fr / 110px 1fr;
-  }
-}
-
-@media (max-width: 420px) {
   #accountSection {
-    padding: 40px 0;
-    height: 100%;
-  }
-
-  #accountInnerContainer {
-    display: grid;
-    grid-template: 1fr 150px 150px 1fr / 150px 1fr;
-    column-gap: 20px;
-    align-items: center;
-  }
-
-  #profileIcon {
-    padding: 0 10px;
-  }
-
-  #otherInfoContainer {
-    padding: 0 10px;
-  }
-
-  #profileIcon {
-    width: 120px;
-    height: 120px;
-  }
-
-  #accountMainDataText {
-    font-size: 14px;
-  }
-
-  #nameText {
-    font-size: 24px;
-  }
-
-  .otherInfoInnerContainer {
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 360px) {
-  #accountSection {
-    padding: 40px 0;
-    height: 100%;
-  }
-
-  #accountInnerContainer {
-    display: grid;
-    grid-template: 1fr 100px 100px 1fr / 100px 1fr;
-    gap: 20px;
-    align-items: center;
-  }
-
-  #profileIcon {
-    padding: 0 10px;
-  }
-
-  #otherInfoContainer {
-    padding: 0 10px;
-  }
-
-  #profileIcon {
-    width: 100px;
-    height: 100px;
-  }
-
-  #accountMainDataText {
-    font-size: 10px;
-  }
-
-  #nameText {
-    font-size: 18px;
-  }
-
-  .otherInfoInnerContainer {
-    font-size: 12px;
+    width: 100%;
+    padding: 2rem 2rem;
   }
 }
