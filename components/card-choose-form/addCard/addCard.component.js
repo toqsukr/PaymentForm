@@ -34,7 +34,7 @@ const setupAddCardContainerClickListener = addCardElement => {
       const cardEditForm = await cardEditFormComponent()
       document.querySelector('#app-inner-container').appendChild(cardEditForm)
       const editCardForm = document.querySelector('.card-edit-form-container')
-      setTimeout(() => editCardForm.classList.add('edit-form-show'), 300)
+      setTimeout(() => editCardForm.classList.add('edit-form-show'), 100)
     }
   })
 }
