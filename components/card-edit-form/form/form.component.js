@@ -9,7 +9,11 @@ import {
   PaymentSystem,
   cardPatterns,
 } from '../../card-choose-form/card-choose-form.data'
-import { cardComponent, deleteCardEditForm } from '../../card-choose-form/card/card.component'
+import {
+  cardComponent,
+  deleteCardEditForm,
+  getVisualCardsCount,
+} from '../../card-choose-form/card/card.component'
 import css from './form.module.css'
 
 export const formComponent = () => {
@@ -34,7 +38,6 @@ const applyFormSubmitListener = form => {
       const cardNumber = form.elements['cardNumber'].value
       const code = form.elements['code'].value
       const paymentSystem = detectPaymentSystem(cardNumber)
-      const cards = getFromStorage('cards')
 
       isValidFullData(cardNumber, expiration, code)
       isValidCreditCardNumber(cardNumber)
@@ -46,12 +49,12 @@ const applyFormSubmitListener = form => {
         code,
         paymentSystem,
       })
-      if (cards && cards.length === 4) {
+      if (getVisualCardsCount() === 5) {
         document.getElementById('add-card-container').remove()
       }
       clearInputs(form)
     } catch (error) {
-      alert(error.message) // Вывод сообщения об ошибке
+      alert(error.message)
     }
   })
 }
@@ -75,9 +78,9 @@ export const detectPaymentSystem = cardNumber => {
 
 const addNewCard = ({ cardExpires, cardNumber, name, code, paymentSystem }) => {
   const data = { cardExpires, cardNumber, name, code, paymentSystem }
-  let cards = getFromStorage('cards')
-  if (!cards || cards.length < 4) {
-    if (!cards) cards = []
+  if (getVisualCardsCount() < 5) {
+    const cards = getFromStorage('cards') || []
+    console.log(cards)
     const imageURL = `/images/${paymentSystem}.png`
     const status = CardStatus.NOTDEFAULT
     cards.push({
@@ -92,9 +95,9 @@ const addNewCard = ({ cardExpires, cardNumber, name, code, paymentSystem }) => {
       paymentSystem,
       status,
     })
+    saveToStorage(cards, 'cards')
     const addCard = document.getElementById('add-card-container')
     document.getElementById('card-choose-form-cards-section').insertBefore(newCard, addCard)
-    saveToStorage(cards, 'cards')
     deleteCardEditForm()
   }
 }
@@ -121,7 +124,6 @@ const isValidCreditCardNumber = cardNumber => {
   }
 
   const sum = cardDigits.reduce((acc, digit) => acc + digit, 0)
-
   if (sum % 10 !== 0) {
     throw new Error('Сard number is incorrect')
   }

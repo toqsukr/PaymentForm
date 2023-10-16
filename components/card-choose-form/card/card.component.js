@@ -56,8 +56,7 @@ const appendIcons = (cardElement, status) => {
 
 const handleTrashClick = trashIcon => {
   const removingCard = trashIcon.parentElement.parentElement
-  const cards = getFromStorage('cards')
-  if (cards && cards.length === 4) {
+  if (getVisualCardsCount() === 5) {
     const addCard = addCardComponent()
     const cardSectionElement = document.querySelector('#card-choose-form-cards-section')
     cardSectionElement.appendChild(addCard)
@@ -68,8 +67,10 @@ const handleTrashClick = trashIcon => {
 
 const deleteFromCards = removingCard => {
   const cards = getFromStorage('cards')
-  const newCards = cards.filter(card => removingCard.id != card.cardNumber)
-  saveToStorage(newCards, 'cards')
+  if (cards) {
+    const newCards = cards.filter(card => removingCard.id != card.cardNumber)
+    saveToStorage(newCards, 'cards')
+  }
 }
 
 export const setupCardContainerClickListener = cardElement => {
@@ -120,3 +121,5 @@ export const setDefaultCard = () => {
   )
   saveToStorage(newCards, 'cards')
 }
+
+export const getVisualCardsCount = () => document.querySelectorAll('.' + css.cardContainer).length
