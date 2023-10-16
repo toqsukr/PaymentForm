@@ -4,13 +4,12 @@ import {
   EXPIRATION_INPUT_MAX_LENGTH,
 } from '../../../utils/constants'
 import { getFromStorage, saveToStorage } from '../../../utils/functions'
-import { appendCards } from '../../card-choose-form/card-choose-form.component'
 import {
   CardStatus,
   PaymentSystem,
   cardPatterns,
 } from '../../card-choose-form/card-choose-form.data'
-import { deleteCardEditForm } from '../../card-choose-form/card/card.component'
+import { cardComponent, deleteCardEditForm } from '../../card-choose-form/card/card.component'
 import css from './form.module.css'
 
 export const formComponent = () => {
@@ -79,13 +78,23 @@ const addNewCard = ({ cardExpires, cardNumber, name, code, paymentSystem }) => {
   let cards = getFromStorage('cards')
   if (!cards || cards.length < 4) {
     if (!cards) cards = []
+    const imageURL = `/images/${paymentSystem}.png`
+    const status = CardStatus.NOTDEFAULT
     cards.push({
       ...data,
-      imageURL: `/images/${paymentSystem}.png`,
-      status: CardStatus.NOTDEFAULT,
+      imageURL,
+      status,
     })
+    const newCard = cardComponent({
+      cardExpires,
+      cardNumber,
+      imageURL,
+      paymentSystem,
+      status,
+    })
+    const addCard = document.getElementById('add-card-container')
+    document.getElementById('card-choose-form-cards-section').insertBefore(newCard, addCard)
     saveToStorage(cards, 'cards')
-    appendCards()
     deleteCardEditForm()
   }
 }

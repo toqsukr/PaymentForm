@@ -7,7 +7,7 @@ export const saveToStorage = (data, key) => {
 
 export const getFromStorage = key => {
   const dataString = localStorage.getItem(key)
-  const data = JSON.parse(dataString)
+  const data = dataString && JSON.parse(dataString)
   return data
 }
 
